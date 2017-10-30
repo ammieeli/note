@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="user">
+		<button id="btn">点击</button>	
+	
+		<script src="../js/ajax.js"></script>
+		<script>
+			btn.onclick=function(){
+				ajax({
+					url:'http://localhost:88',
+					data:{
+						user:user.value
+					},
+					success:function(data){
+						console.log(data);
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

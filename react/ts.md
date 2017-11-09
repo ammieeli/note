@@ -19,13 +19,15 @@
 
 4.当把数组写在jsx结构里面，react会自动帮你展开
 
+	let props={inputVal,todosData,view}  =>{...props}
+
 5.在数组里面的jsx元素应该在最外层的结构有一个key，应该保证相应数据的key是唯一的。
 同一份结构永远保证、不管视图如何变化，相同的数据对应同一个key值。
 
 6.组件之间的交流（数据传递），组件之间通过props进行数据传递。react是单向数据流。数据从顶层流向
 底层，不能修改props
 
-let props={inputVal,todosData,view}  =>{...props}
+
 
 7.在元素上面声明ref属性，可以通过组件拿到真实的dom元素
 在标签里写 ref="todoContainer"；
@@ -92,18 +94,89 @@ BrowserRouter  使用的是browerHistory  放到最顶层，然后把其他的�
 
 HashRoute 使用的是hashHistory
 
+exact
+    只会在path匹配location-pathname时才匹配
+    
 
 Route
 	path属性：如果地址匹配到了这个路径，就会显示。
+	
+	渲染的三种方法
+	
+	
 	component属性: 接收一个组件变量。
-	Route标签里不能嵌套元素。
-	Route会往组件里面存入三个props  ：history location match
+		Route标签里不能嵌套元素。
+		
+		渲染的三种方法
+		component属性
+			会自动往组件里面存入三个props  ：history location match
+		
+		2.可以接收一个回调函数，会往回调函数传入一个对象作为参数，这个对象里面有：history location match
+		，回调函数需要你
+
+		render后面必须接回调函数	，和component第二点一样
+		children 接收一个回调函数，和render一样，不过他无论如何都会被匹配到，不管path是什么	
+	
+	
 	
 Link 
 	最后会被渲染成a标签链接、
 	to的属性：跳转到哪里
-
+			接收字符串：'/url' 一个url地址
+			
+			
+	传入的三个属性
+		history
+		location
+			history 的location 是可变的，是实时的，是不稳定的，如果你想要location，
+			直接从route传入的props里拿
 	
+	
+	
+	<Link to ={{
+		pathname
+	
+
+	replace: bool
+	true 跳转视图的时候，替换掉浏览器 history stack 里面 当前浏览器的entry
+	false 跳转视图的时候，往history stack 里面 push一个新的entry
+
+NavLink
+ 	activeStyle
+ 	activeClassName
+ 	exact
+ 	strict
+ 	isActive  isActive={()=>'/'===location.pathname}
+ 	location
+ 	其他的和link一样
+    
+redirect 
+接收一个to的属性，如果它被渲染的时候，会重定向到一个新的地方，可以是一个string，object
+ <Route path="/teleplay" render={
+                    ({history, location, match})=>{
+                        return false ? (
+                            <div>
+                                <h1>这个是剧集</h1>
+                                <Teleplay location={location}/>
+                            </div>
+                        ):
+                        // <div>灯火辉煌</div>
+                        //重定向网页地址
+                        ( <Redirect to='/movie'/>)
+                    }
+                }>
+
+                </Route>
+                
+
+switch
+可以在404时候使用
+从上往下匹配，只要匹配到一个，匹配成功，不在往下匹配，如果匹配失败，就继续往下直到成功一个
+
+
+withRouter 一个高阶函数  是一个方法 接收一个组件作为参数（abc)，然后导出一个组件，
+这个时候abc组件的props就有了那三个属性
+
 		
 let todosComponent=[1,1,1,6,1].map((elt,indx,arr)=>{
 				//elt[1,1,1,6,1]
@@ -124,3 +197,11 @@ let todosComponent=[1,1,1,6,1].map((elt,indx,arr)=>{
 	// 		view
 	// 	})
 	// }
+
+redacs
+react-conva
+
+wappalyzer  谷歌插件可以查看网站应用了什么技术
+
+
+{/* <li><NavLink to="/teleplay" activeStyle={{color: 'red'}}>剧集</NavLink></li> */}

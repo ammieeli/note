@@ -78,6 +78,25 @@ unmounting	卸载阶段
 		componentWillUnmount（）{
 		}
 		
+react组件声明的两种方式
+	使用类声明，可以有内部状态，有生命周期
+	使用函数声明，没有内部状态，没有生命周期，只做渲染。只渲染上面传下来的props
+	技巧：何时使用函数声明组件，只要你不用this.state。
+	export default  function(props){
+	let {changeVal,location}=props;
+	return(
+		<div>
+			onClick={()=>changeVal(Math.random())}
+			剧集的视图内容
+			<div>从哪里过来:{from}</div>
+
+		</div>
+	)
+}
+
+class A extends Component{
+
+
 
 
 10.promise	异步问题，解决回调函数的噩梦

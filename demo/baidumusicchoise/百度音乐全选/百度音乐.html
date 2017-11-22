@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.list-body li:nth-child(even) {
+				background: yellow;
+			}
+			.list-body li:nth-child(odd) {
+				background: #fff;
+			}
+			.list-body li:hover {
+				background: green;
+			}
+			.list-body li.checkedColor {
+				background: green;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/baidu.css" />
+		<script src="../src/vue.js"></script>
+	</head>
+
+	<body>
+		<div class="wrap" id="app">
+			<div class="baidu">
+				<ul class="list list-head">
+					<li>
+						<div>
+							<input type="checkbox" v-model="isAllChecked"/>全选
+						</div>
+						<span>歌单</span>
+						<span>歌手</span>
+						<span>专辑</span>
+					</li>
+				</ul>
+				<ul class="list list-body">
+					<li 
+						v-for="item,index in user"
+						 :class="{checkedColor:item.checked}" 
+						 >
+						<div>
+							<input type="checkbox" v-model='item.checked'/>
+						</div>
+						<span>
+							{{item.name}}
+						</span>
+						<span>
+							{{item.song}}
+						</span>
+						<span>
+							{{item.album}}
+						</span>
+					</li>
+				</ul>
+				<div class="select">
+					<span class="selectAll">
+
+						<span>统计：</span>
+					</span>
+					<div class="others">
+						<span><em></em>歌手有：{{user.length}}位</span>
+						<span><em></em>专辑有{{totalSum}}张</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			let data = [
+				{
+					id:Date.now()+Math.random(),
+					name: '邓紫棋',
+					song: '泡沫',
+					checked: false,
+					album: 10
+				},
+				{
+					id:Date.now()+Math.random(),
+					name: '王杰',
+					song: '泡沫',
+					checked: false,
+					album: 10
+				},
+				{
+					id:Date.now()+Math.random(),
+					name: '邓紫棋',
+					song: '泡沫',
+					checked: false,
+					album: 10
+				},{
+					id:Date.now()+Math.random(),
+					name: '邓紫棋',
+					song: '泡沫',
+					checked: false,
+					album: 10
+				}
+			];
+			
+			new Vue({
+				el:'#app',
+				data:{
+					user:data,
+					showIndex:0
+				},
+				computed:{
+					isAllChecked:{
+						get(){
+							let newArr=this.user.filter(function(item){
+								return item.checked
+							})
+							return newArr.length===this.user.length
+						},
+						set(newValue){
+							this.user.forEach(function(item){
+								item.checked=newValue
+							})
+						}
+					},
+					totalSum:function(){
+						
+						let sum=this.user.filter(item => item.checked).reduce(function(n,item){
+//							console.log(n,item.checked);
+							return n+parseInt(item.album)
+							
+							
+							},0)
+						
+						return sum
+					}
+				}
+//				methods: {
+//					changeIndex(index){
+//						this.showIndex = index;
+//					}
+//				}
+			})
+
+		</script>
+	</body>
+
+</html>

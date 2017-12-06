@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			var arr=['星期日','星期一','星期二','星期三','星期四','星期五'];
+			let div=document.getElementById('box');
+//			var n=0;
+			function add(n){
+				if(n<10){
+					return n='0'+n;
+				}else{
+					return n=''+n;
+				}
+			}
+			console.log(add(5))
+			go();
+			setInterval(go,1000);
+			
+			
+			function go(){
+				let date=new Date;
+				let y=date.getFullYear();
+				let m=date.getMonth();
+				let da=date.getDate();
+				let h=date.getHours();
+				let mi=date.getMinutes();
+				let se=date.getSeconds();
+				let zhou=arr[date.getDay()];
+				
+				let str=`${y}年${add(m)}月${add(da)}日${add(h)}时${add(mi)}分${add(se)}秒${zhou}`;
+				div.innerHTML=str;
+			}
+			
+			
+		</script>
+	</body>
+</html>

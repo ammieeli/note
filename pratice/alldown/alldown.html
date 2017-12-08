@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				padding:0;
+				margin: 0;
+				background: #de4a63;
+			}
+			#box{
+				width:840px;
+				height:800px;
+				margin: 80px auto 0; 
+			}
+			ul{
+				margin:0;
+				padding:0;
+				list-style: none;
+				overflow: hidden;
+			}
+			 li{
+				height: 350px;
+				width: 200px;
+				border: 1px solid #000;
+				background: #fff;
+				float:left;
+				margin-right:10px;				
+				position:relative;
+			}
+			#banner .last{
+				margin: 0;
+			}
+			.top{
+				height:30px;
+				padding: 5px;
+				background:#000;
+				font-size: 12px;
+				
+			}
+			input{
+				
+				width:130px;
+				height:20px;
+				background:#000;
+				border:none;
+				border-bottom: 1px solid #de4a63;
+				vertical-align: top;
+				outline: none;
+				color:#DE4A63;
+				text-align: center;
+				/*font-size: 10px;*/
+			}
+			button{		
+				display:inline-block;		
+				width:50px;
+				height:30px;
+				
+				margin-left: 5px;
+				font-size: 16px;
+				background:#000;
+				border:none;
+				line-height: 30px;
+				color:#DE4A63;
+				cursor: pointer;
+				outline: none;
+			};
+			.time{
+				width:100%;
+				height: 50px;
+				
+			}
+			.time span{
+				display:inline-block;
+				margin: 15px 0;
+				font-size: 16px;
+				vertical-align: top;
+				margin-left: 5px;
+			}
+			.time img{
+				width:10px;
+				height: 20px;
+				display:inline-block;
+				margin-top:10px;
+				margin: 0;
+				padding: 0;
+			}
+			.shop{
+				width: 100%;
+				height:140px;
+			}
+			.shop img{
+				width: 140px;
+				height: 100%;
+				margin: 0 auto;
+				display: block;
+			}
+			h4,p{
+				margin:0;
+				text-align: center;
+			}
+			h4{				
+				margin-top: 20px;
+				height: 30px;
+				font: 16px/30px "微软雅黑";				
+			}
+			p{
+				height: 20px;
+				font: 14px/20px "微软雅黑";	
+				color: #bab9ba;
+				margin-top: 10px;
+			}
+			p span{
+				color: #d64860;
+			}
+			.things{
+				margin-top: 20px;
+				width: 100%;				
+			}
+			.dt,.dd{
+				margin: 0;
+				padding:0;
+				width: 100%;
+				height:50px;
+				background: #000;
+				color:#fff;
+				vertical-align: center;
+			}
+			.dd{
+				background: #fff;
+				color:#000;
+			}
+			.dt span,.dd span{
+				display: inline-block;
+				font: 16px/50px "微软雅黑";
+				width:250px;
+				margin-left: 10px;
+			}
+			.dd span{
+				font-size: 14px;
+				overflow: hidden;
+				height:100%;
+				display: inline-block;
+			}
+			.dd span img{
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				margin-top: 10px;
+				float: right;
+			}
+			.dd span:nth-child(2){
+				color:#db465f;
+			}
+			.dd{
+				display: none;
+			}
+			.show{
+				display:block;
+			}
+			.cover{
+				width:100%;
+				height: 100%;
+				background: rgba(0,0,0,0.6);
+				position: absolute;
+				top: 0px;
+				left:0;
+				z-index: 2;
+				display:none;
+			}
+			.sold{
+				width:100%;
+				height: 100%;
+				position: absolute;
+				top: 10px;
+				left:0;
+				z-index: 6;
+				transform: scale(2);
+				display:none;
+				/*opacity:0;*/
+			}
+			.sold img{
+				display: block;
+				width: 200px;
+				height: 300px;	
+							
+				
+			}
+			.move{
+				position: absolute;
+				left:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="banner">
+				<li>
+					<div class="move">
+						<div class="top">
+						<input type="text" value="2017 12 08 10:14:50"/>
+						<button>确定</button>
+					</div>
+					<div class="time">
+						<span>剩余</span>
+						<span class="imgs imga">
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/point.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/point.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						</span>
+					</div>
+					<div class="shop">
+						<img src="img/sj.jpg" alt="" />
+					</div>
+					<div class="buy">
+						<h4>iphonex手机</h4>
+						<p>抢购价：<span>￥8000</span></p>
+					</div>
+					</div>
+					
+					<div class="cover"></div>
+					<div class="sold">
+						<img src="img/none.png" alt="" />
+					</div>
+				</li>
+				
+				<li>
+					<div class="move">
+						<div class="top">
+						<input type="text" value="2017 12 08 10:14:50"/>
+						<button>确定</button>
+					</div>
+					<div class="time">
+						<span>剩余</span>
+						<span class="imgs imga">
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/point.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/point.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						</span>
+					</div>
+					<div class="shop">
+						<img src="img/watch.jpg" alt="" />
+					</div>
+					<div class="buy">
+						<h4>瑞士精密男式手表</h4>
+						<p>抢购价：<span>￥50000</span></p>
+					</div>
+					</div>
+					
+					<div class="cover"></div>
+					<div class="sold">
+						<img src="img/none.png" alt="" />
+					</div>
+				</li>
+				<li class="last">
+					<div class="move">
+						<div class="top">
+						<input type="text" value="2017 12 08 10:14:50"/>
+						<button>确定</button>
+					</div>
+					<div class="time">
+						<span>剩余</span>
+						<span class="imgs imga">
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/point.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/point.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						</span>
+					</div>
+					<div class="shop">
+						<img src="img/txd.jpg" alt="" />
+					</div>
+					<div class="buy">
+						<h4>京东的剃须刀</h4>
+						<p>抢购价：<span>￥200</span></p>
+					</div>
+					</div>
+					
+					<div class="cover"></div>
+					<div class="sold">
+						<img src="img/none.png" alt="" />
+					</div>
+				</li>
+				<li>
+					<div class="move">
+						<div class="top">
+						<input type="text" value="2017 12 08 10:14:50"/>
+						<button>确定</button>
+					</div>
+					<div class="time">
+						<span>剩余</span>
+						<span class="imgs imga">
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/point.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/point.png" alt="" />
+						<img src="img/0.png" alt="" />
+						<img src="img/0.png" alt="" />
+						</span>
+					</div>
+					<div class="shop">
+						<img src="img/pc.jpg" alt="" />
+					</div>
+					<div class="buy">
+						<h4>小米平板电脑</h4>
+						<p>抢购价：<span>￥5000</span></p>
+					</div>
+					</div>
+					
+					<div class="cover"></div>
+					<div class="sold">
+						<img src="img/none.png" alt="" />
+					</div>
+				</li>
+				
+			</ul>
+			<div class="things">
+				<div class="dt">
+					<span>商品</span>
+					<span>价格</span>
+					<span></span>
+					
+				</div>
+				<div class="list">
+					<div class="dd">
+						<span>iphonex手机</span>
+						<span>￥8000</span>
+						<span>
+							<img src="img/sj.jpg" alt="" />
+						</span>
+					</div>
+					<div class="dd">
+						<span>瑞士精密男式手表</span>
+						<span>￥50000</span>
+						<span>
+							<img src="img/watch.jpg" alt="" />
+						</span>
+					</div>
+					<div class="dd">
+						<span>来自京东的剃须刀</span>
+						<span>￥200</span>
+						<span>
+							<img src="img/txd.jpg" alt="" />
+						</span>
+					</div>
+					<div class="dd">
+						<span>小米平板电脑</span>
+						<span>￥5000</span>
+						<span>
+							<img src="img/txd.jpg" alt="" />
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+		
+		var lis=document.querySelectorAll('li');
+		let moves=document.querySelectorAll('.move');		
+		let inputs=document.querySelectorAll('input');			
+		let btns=document.querySelectorAll('button');
+		var list=document.querySelectorAll('.dd');
+//		console.log(num);
+		
+		var cover=document.querySelectorAll('.cover');
+		var sold=document.querySelectorAll('.sold');
+		for(var i=0;i<lis.length;i++){
+			rool(i);
+		}
+//		rool(0);
+		function rool(num){
+//			console.log(num)
+			
+			var imgs = lis[num].querySelectorAll('.imgs img');
+			btns[num].onclick=function(){
+				let val=inputs[num].value;
+				function to(n){
+					return n<10?'0'+n:''+n;
+				}					
+				
+				let fu=new Date(val);
+//				back();
+				var timer=setInterval(back,1000)
+				function back(){
+					let now=new Date();
+					//转成分钟
+					let t=(fu-now)/1000;
+					//算天
+					let day=Math.floor(t/86400);
+					//小时
+					t %=86400;
+					
+					let h=Math.floor(t/3600);
+					//分钟
+					t %=3600;
+					let mi=Math.floor(t/60);
+					//秒
+					t %=60;
+					
+		
+					var str='';
+					if(Math.floor(t)<=0){
+						clearInterval(timer);
+						t=0;
+						cover[num].style.display='block';
+						sold[num].style.display='block';                      
+						shake(lis[num],'left',10,function(){
+							sold[num].style.top='0';
+							sold[num].style.transition='700ms';
+							sold[num].style.transform='scale(1)';
+							list[num].style.display='block';
+							
+						},1000)
+					
+						
+					}else{
+						str=to(h)+':'+to(mi)+':'+to(Math.floor(t));
+					}
+					for(var i=0;i<str.length;i++){
+						if(i!=2&&i!=5){
+							console.log(str)
+							imgs[i].src='img/'+str[i]+'.png';
+							console.log(imgs[i])
+						}
+					}
+				}
+				
+				
+			}
+			
+			function shake(obj,attr,t,callback){
+				let arr=[];
+				let n=0;
+				let timer=null;
+				for(var i=t;i>0;i-=2){
+					arr.push(-i,i)
+				};
+				arr.push(0);
+				
+				timer=setInterval(function(){
+					obj.style[attr]=parseInt(getComputedStyle(obj)[attr])+arr[n]+'px';
+					n++;
+					if(n>arr.length){
+						clearInterval(timer);
+						n=0;
+						callback&&callback()
+					}
+				},50)
+			}
+			
+		}
+			
+
+		</script>
+	</body>
+</html>

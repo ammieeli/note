@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{padding:0;margin:0;}
+			.wrap{width: 310px; height: 600px; margin:20px auto 0 auto; border:1px solid #ccc;border-radius: 5px; box-shadow: 0 0 0 5px #ccc;}
+			.btn{width: 100%; height: 35px; cursor: pointer; border:none; background: #83b5f3; font-size: 14px; font-weight: bold; outline: none; color: #fff;}
+			.box{height: 530px; overflow: hidden; position: relative;}
+			.list{ position: absolute;top:0;left:0; text-align:center; font-size: 16px; color: #f00; background: #caeca2;}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+		<button class="btn">向 上</button>
+		<div class="box">
+			<div class="list">
+				111<img src="img1.jpg" />
+				222<img src="img1.jpg" />
+				333<img src="img1.jpg" />
+			</div>
+		</div>
+		<button class="btn">向 下</button>
+	</div>
+	<script>
+		var btns=document.querySelectorAll('.btn');
+		var list=document.querySelector('.list');
+		var num=0;
+		let timer=null;
+		btns[0].onmousedown=function(){
+			timer=setInterval(function(){
+				num-=50;
+				list.style.top=num+'px';
+			
+				if(num<-1350){
+					clearInterval(timer);
+				}
+			},200)
+			
+		}
+		btns[1].onmousedown=function(){
+			timer=setInterval(function(){
+				num+=50;
+				list.style.top=num+'px';
+				if(num>-10){
+					clearInterval(timer);
+				}
+			
+			},200)
+			
+		}
+		btns[1].onmouseup=btns[0].onmouseup=function(){
+			clearInterval(timer);
+		}
+	</script>
+	</body>
+</html>

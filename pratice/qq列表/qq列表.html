@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding:0; margin:0;} 
+			li{list-style: none;}
+			body{ background: url(img/1.jpg); }
+			.wrap{width: 353px; border: 1px solid #696a6d; box-shadow: 0 0 1px #f00;border-radius: 20px; margin:20px auto 0 auto ; padding-bottom: 60px; background: #000;}
+			.content{width: 320px; height: 550px; background: url(img/bc.jpg) no-repeat center center; background-size: cover; margin:30px auto 0 auto; overflow-y: auto;}
+			.list{width: 280px; margin:13px auto 0 auto;}
+			.list li{ background: rgba(0,0,0,.6); margin-bottom: 10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+			.list li h2{ height: 48px; line-height: 48px; font-size: 14px; color: #fff; background: url(img/arr_r.png) no-repeat 10px center; padding-left: 30px;}
+			.list ul{ display: none; background: #000; padding-bottom: 10px;}
+			.list ul li{ background: #000; height: 40px; line-height: 40px; color: #fff; padding-left: 30px; font-size: 14px; margin-bottom:0;}
+			.list ul li:hover{ background: #5b5b5b; cursor: pointer;}
+			.list ul li.cur{ background: #72313b; }
+	
+			.list li h2.active{background:rgba(206,84,103,.6) url(img/arr_b.png) no-repeat 10px center;}
+			.list li ul.show{ display: block; }
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="content">
+				<ul class="list">
+					<li>
+						<h2>我的好友</h2>
+						<ul>
+							<li>小蝌蚪</li>
+							<li>小蚂蚁</li>
+							<li>小花</li>
+							<li>小白</li>
+							<li>小松鼠</li>
+						</ul>
+					</li>
+					<li>
+						<h2>企业好友</h2>
+						<ul>
+							<li>小王</li>
+							<li>小李</li>
+							<li>小雪</li>
+							<li>小明</li>
+							<li>小孙</li>
+						</ul>
+					</li>
+					<li>
+						<h2>黑名单</h2>
+						<ul>
+							<li>小黑</li>
+							<li>小蓝</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script>
+		var list=document.querySelector('.list');
+		var title=list.querySelectorAll('h2');
+		var content=list.querySelectorAll('ul');
+		
+		var onOff=true;
+		for(var i=0;i<title.length;i++){
+			title[i].index=i;
+			
+			let lies=content[i].querySelectorAll('li');
+			title[i].onclick=function(){
+                if(this.className==''){
+                	for(var i=0;i<title.length;i++){
+						title[i].className='';
+						content[i].className='';
+					}
+                	content[this.index].classList.add('show');					
+					this.classList.add('active');	
+                	
+                	onOff=false;
+                }else{
+                	onOff=true;
+                	content[this.index].classList.remove('show');					
+					this.classList.remove('active');	
+					
+                }
+					
+							
+			}
+		
+			for(var j=0;j<lies.length;j++){
+				
+				lies[j].onclick=function(){
+					for(var j=0;j<lies.length;j++){
+						lies[j].classList.remove('cur');
+						this.classList.add('cur');
+					}
+					
+				}
+			}
+		}
+	</script>
+</html>

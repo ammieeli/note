@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>V字形</title>
+	<style type="text/css">
+		.all{width: 400px; height: 600px; margin:0 auto; border: 1px solid #ccc; border-radius: 5px;}
+		.content{width:400px; height: 400px; padding-top: 100px; background: ghostwhite;}
+		#box{width:250px;height: 250px; margin:0 auto; position: relative;}
+		#box div{width: 50px; height: 50px;background: #000; position: absolute;}
+		.top{ text-align: center;padding: 15px 0; background: ghostwhite;border: 1px solid #ccc; }
+		.btn{ display: inline-block; width: 100px; height: 40px; line-height: 40px; color: #fff; background: none; background: mediumpurple; border: none;border-radius: 5px; cursor: pointer; font-size: 16px; }
+		/*input{
+			width:170px;
+			height:30px;
+			margin-right:10px;
+			text-align: center;
+			font:18px/30px "微软雅黑",arial;
+		}*/
+	</style>
+	</script>
+</head>
+<body>
+	<div class="all">
+		<div class="top"><button id="btn" class="btn">变化</button></div>
+		<div class="content">
+			<div id="box"></div>
+		</div>		
+	</div>
+	
+	<script>
+		let box = document.getElementById('box');
+		let btn=document.querySelector('#btn');
+	    let str = '';
+	    let num =5;
+	    let n=0;
+	   btn.onclick=function(){
+	   	n++;
+	   	 if(n==1){
+	   	 	fnl();
+	   	 }else if(n==2){
+	   	 	fnB()
+	   	 }else if(n==3){
+	   	 	fnr()
+	   	 }else{
+	   	 	n=0;
+	   	 	fnT()
+	   	 }
+	   }
+	   
+	   //左边
+	   function fnl(){
+	   		str = '';
+	   		 for(var i=0;i<num;i++){
+		        if(i<3){
+		            str += `<div style="left:${i*50}px;top:${i*50}px;"></div>`
+		        }else{
+		            str += `<div style="left:${(num-i-1)*50}px;top:${i*50}px;"></div>`
+		        }		        
+		    }
+	   		 box.innerHTML = str;
+	   };
+	   
+	   //下边
+	   function fnB(){
+	   		str = '';
+	   		 for(var i=0;i<num;i++){
+		        if(i<3){
+		            str += `<div style="bottom:${i*50}px;left:${i*50}px;"></div>`
+		        }else{
+		            str += `<div style="bottom:${(num-i-1)*50}px;left:${i*50}px;"></div>`
+		        }
+		    }
+	   		 box.innerHTML = str;
+	   }
+	   
+	   //右边
+		function fnr(){
+	   		str = '';
+	   		 for(var i=0;i<num;i++){
+		        if(i<3){
+		            str += `<div style="right:${i*50}px;top:${i*50}px;"></div>`
+		        }else{
+		            str += `<div style="right:${(num-i-1)*50}px;top:${i*50}px;"></div>`
+		        }		        
+		    }
+	   		 box.innerHTML = str;
+	   };
+	   
+	    //上边
+	   function fnT(){
+	   		str = '';
+	   		 for(var i=0;i<num;i++){
+		        if(i<3){
+		            str += `<div style="top:${i*50}px;left:${i*50}px;"></div>`
+		        }else{
+		            str += `<div style="top:${(num-i-1)*50}px;left:${i*50}px;"></div>`
+		        }
+		    }
+	   		 box.innerHTML = str;
+	   }
+	   
+	</script>
+</body>
+</html>

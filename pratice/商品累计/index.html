@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/price.css" />
+	
+	</head>
+
+	<body onselectstart="return false;">
+		<div class="wrap">
+			<div class="box">
+				<ul class="list">
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<span>
+							单价：<strong>12.5元 </strong> 小计：<strong>0元</strong>
+						</span>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<span>
+							单价：<strong>10.5元 </strong> 小计：<strong>0元</strong>
+						</span>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<span>
+							单价：<strong>8.5元 </strong> 小计：<strong>0元</strong>
+						</span>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<span>
+							单价：<strong>8元 </strong> 小计：<strong>0元</strong>
+						</span>
+					</li>
+					<li>
+						<i></i>
+						<em>0</em>
+						<i></i>
+						<span>
+							单价：<strong>14.5元 </strong> 小计：<strong>0元</strong>
+						</span>
+					</li>
+				</ul>
+				<div class="info">
+					<span>商品共合计：<em>0</em>件</span>
+					<span>共花费了：<em>0</em>元</span>
+					<br />
+					<br />
+					<span>其中最贵的商品单价是：<em>0</em>元</span>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+		  let list=document.querySelector('.list');
+			let lis=document.querySelectorAll('li');
+			let info=document.querySelector('.info');
+			let allNum=info.getElementsByTagName('em');
+			let emNum=document.querySelectorAll('ul em');
+			let strong2=list.getElementsByTagName('strong');
+
+			for(var i=0;i<lis.length;i++){
+				fn(lis[i]);
+				
+			}
+			/* 
+			 *1. for循环，便利所有的li，封装函数传实参
+			 * 2.封装一个函数，
+			 * 对应每一个li，获取单行li里的点击按钮，单价以及小计
+			 * li的每行变化
+			 * 点击数字的加减，数量变化，小计变化
+			 * 
+			 * 3.函数套函数，点击数字的加减，影响总计部分的变化，所以在点击数字加减的时候，触发总计部分的封装函数
+			 * 4.总计部分的封装函数，在全局获取，ul里的所有点击变化的数量值，加起来，获取所有的小计，加起来，
+			 * 设置一个无限最小值，遍历所有被点击的li里的单价，对比找到最大值
+			 * 
+			 * */
+			function fn(iLi){
+				
+				let btn=iLi.getElementsByTagName('i');
+				let em=iLi.querySelector('em');
+				let minsSum=iLi.getElementsByTagName('strong');
+				let num=0;
+				let minVal=parseFloat(minsSum[0].innerText);
+				btn[1].onclick=function(){
+					num++;
+					em.innerText=num;
+					
+					minsSum[1].innerText=minVal*num+'元';
+					sumAll()
+				}
+				btn[0].onclick=function(){
+					num--;
+					if(num<0){
+						num=0;
+					}
+						em.innerText=num;
+						minsSum[1].innerText=minVal*num+'元';
+						sumAll()
+				}
+				
+				function sumAll(){
+					
+					let allTO=0;
+					let moneyTo=0;
+					let number1=-Infinity;
+					for(i=0;i<emNum.length;i++){
+						allTO+=Number(emNum[i].innerText);
+						moneyTo+=parseFloat(strong2[2*i+1].innerText);
+
+						if(number1<=parseFloat(strong2[2*i].innerText)&&Number(emNum[i].innerText)!==0){
+							number1=parseFloat(strong2[2*i].innerText);
+						}
+					}
+					allNum[0].innerText=allTO;
+					allNum[1].innerText=moneyTo;	
+					allNum[2].innerText=number1;
+				}
+				
+			}
+		</script>
+	</body>
+
+</html>

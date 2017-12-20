@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+#wrap{
+	width:450px;
+	height: 260px;
+	background: #ffb746;
+	/*border-radius:10px;*/
+	border: 1px solid #000;
+	font-family: "微软雅黑";
+	
+	/*box-shadow:1px 1px 1px #000;*/
+}
+nav a{
+	display: inline-block;
+	width:146px;
+	height: 40px;
+	font-size: 16px;
+	text-align: center;
+	line-height: 40px;
+	color: #000;
+	text-decoration: none;
+	background: #fff;
+}
+a.active{
+	background: #ffb746;
+	color: #fff;
+}
+
+#box{
+	margin:20px;
+	height: 180px;
+}
+#box ul{
+	width:226px;
+	list-style: none;
+	float: left;
+}
+#box div{
+	display: none;
+}
+#box div.show{
+	display: block;
+}
+#box ul li{
+	height: 60px;
+	width
+}
+#box ul li.active{
+	background:#fff;
+}
+#box li p{
+	font-size: 14px;
+	color:#fff;
+	text-indent:2em;
+	line-height:2.5em;
+	height: 35px;
+}
+#box li.active p{
+	font-size: 16px;
+	color:#000;
+}
+#box li.active span{
+	color:#000;
+}
+img{
+	width:178px;
+	height: 178px;
+	display: block;
+	float: left;
+	border: 2px solid #fff;
+	display: none;
+}
+img.active{
+	display: block;
+}
+span{
+	font-size: 12px;
+	line-height: 20px;
+	text-indent:2.5em;
+	display: block;
+	color:#fff;
+}
+#box div{
+	height: 180px;
+	width:
+}
+
+</style>
+</head>
+<body>
+	<section id="wrap">
+		<nav>
+			<a href="javascript:;" class="active">专题</a>
+			<a href="javascript:;">视频</a>
+			<a href="javascript:;">图片</a>
+		</nav>
+		<div id="box">
+			<div class="show">
+				<img src="img/1.jpg" alt="" class="active"/>
+				<img src="img/2.jpg" alt=""/>
+				<img src="img/3.jpg" alt=""/>
+				<ul class="show">
+					<li class="active" >
+						<p>奇虎360纽交所上市11</p>
+						<span>2016-10-12</span>
+					</li>
+					<li>
+						<p>2011年IT领袖峰会</p>
+						<span>2016-10-12</span>
+					</li>
+					<li>
+						<p>CCBN召开 助三网融合</p>
+						<span>2016-10-12</span>
+					</li>
+				</ul>
+			</div>
+			
+			<div>
+				<img src="img/4.jpg" alt=""/>
+				<img src="img/3.jpg" alt=""/>
+				<img src="img/1.jpg" alt=""/>
+				<ul class="show">
+					<li class="active" >
+						<p>奇虎360纽交所上市222</p>
+						<span>2016-10-12</span>
+					</li>
+					<li>
+						<p>2011年IT领袖峰会</p>
+						<span>2016-10-12</span>
+					</li>
+					<li>
+						<p>CCBN召开 助三网融合</p>
+						<span>2016-10-12</span>
+					</li>
+				</ul>
+			</div>
+			
+			<div>
+				<img src="img/1.jpg" alt=""/>
+				<img src="img/2.jpg" alt=""/>
+				<img src="img/3.jpg" alt=""/>
+				<ul class="show">
+					<li class="active" >
+						<p>奇虎360纽交所上市333</p>
+						<span>2016-10-12</span>
+					</li>
+					<li>
+						<p>2011年IT领袖峰会</p>
+						<span>2016-10-12</span>
+					</li>
+					<li>
+						<p>CCBN召开 助三网融合</p>
+						<span>2016-10-12</span>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+	</section>
+<script>
+
+	/*
+	 * 获取元素
+		 *先获取整体盒子
+		 * 获取所有标题
+		 * 获取所有大列表
+	 *设置初始值
+	 	 *获取第一个页面上的小列表的li
+	 	 * 获取第一个页面上的所有图片
+	 	 * 设置大列表改变下标的变量
+	 	 * 设置小列表及图片改变下标的变量
+	 	 * 设置timer=null
+ 	 * 开始标题的移入事件
+ 	 	* 先便利标题，然后设置事件，指定对应下标，先清空大列表及标题下标里的变化
+ 	 	* 然后清空小列表及标题的下标变化
+ 	 	* 把大列表的下标跟当前事件的下标对应起来，然后小列表的变量变成0（换页面了）
+ 	 	* 然后即时获取当前标题页面下的小列表及图片，即big对应的，添加变化
+ 	*开始小列表的移入事件
+		* 先获取所有大列表里的小列表的li
+		* 然后便利这些li.给他们添加移入事件
+		* 然后这些li对应的当前页面上的li的变化先清空后添加，所以对应了大列表移入的big值获取的首页小列表的变量
+		* 首页小列表的变量是small,先清空小列表及图片的变化，然后small变量要等于当前移入事件的下标，然后再给加变化
+	* 开始封装定时器
+		* 设置封装函数，然后调用  封装一个定时器，定时器执行的内容跟移入标题的内容一样，不过small跟big值要++
+		* 而且要判断临界点归零，临界点大于当前页面小列表的length-1的时候归零
+	* 然后整个盒子的移入移出开启关闭定时器
+	 */
+
+    
+		var wrap=document.querySelector('#wrap');
+		var hs=document.querySelectorAll('nav a');
+		var box=document.querySelector('#box');
+		var divs=box.querySelectorAll('div');
+		var imgs=divs[0].querySelectorAll('img');
+		var lis=divs[0].querySelectorAll('li');
+		//设置初始值
+		var big=0;
+		var small=0;
+		var timer=null;
+		
+		//标题移入移出事件
+		for(var i=0;i<hs.length;i++){
+			hs[i].index=i;
+			hs[i].onmouseover=function(){
+				
+				hs[big].className='';
+				divs[big].className='';
+				imgs[small].className='';
+				lis[small].className='';
+				
+				big=this.index;
+				small=0;
+				
+				hs[big].className='active';
+				divs[big].className='show';
+				
+				imgs=divs[big].querySelectorAll('img');
+				lis=divs[big].querySelectorAll('li');
+				imgs[small].className='active';
+				lis[small].className='active';
+			};
+			
+			let lists=divs[i].querySelectorAll('li');
+			for(let j=0;j<lists.length;j++){
+				lists[j].index=j;
+				lists[j].onmouseover=function(){
+					lis[small].className='';
+					imgs[small].className='';
+					small=this.index;
+					lis[small].className='active';
+					imgs[small].className='active';
+				}
+			}
+		}
+		 
+		wrap.onmouseover=function(){
+			clearInterval(timer);
+		};
+		wrap.onmouseout=function(){
+			fn()
+		}
+		
+		 fn();	
+		function fn(){
+			timer=setInterval(function(){
+				hs[big].className='';
+				divs[big].className='';
+				imgs[small].className='';
+				lis[small].className='';
+				
+				small++;
+				if(small>lis.length-1){
+					big++;
+					if(big>lis.length-1){
+						big=0;
+					}
+					small=0;
+				}
+				
+				hs[big].className='active';
+				divs[big].className='show';
+				
+				imgs=divs[big].querySelectorAll('img');
+				lis=divs[big].querySelectorAll('li');
+				imgs[small].className='active';
+				lis[small].className='active';
+			},1000)
+		}
+</script>
+</body>
+</html>
+
+
+    
+    
+	

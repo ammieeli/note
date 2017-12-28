@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			html {
+
+				width: 100%;
+				height: 100%;
+			}
+			body{
+				margin: 0px;
+				width: 100%;
+				height: 100%;
+			}
+			.main {
+				width: 100%;
+				height: 100%;
+				background: url(./image/bg.png) no-repeat;
+				background-size: 100% 100%;
+				overflow: hidden;
+			}
+			.logo {
+				display: block;
+				width: 200px;
+				height: 55px;
+				background: url(./image/logo.png) no-repeat;
+				margin: 20px auto;
+			}
+			ul{
+				list-style: none;
+				font-size: 22px;
+				color: #8c949c;
+				font-weight: bold;
+				
+			}
+
+			ul li {
+				position: relative;
+				padding-left: 10px;
+				
+			}
+
+			ul li div{
+				height: 98%;
+				width: 1px;
+				border-left: 1px dotted #ccc;
+				position: absolute;
+				left: 14px;
+				top: 18px;
+			}
+
+			ul ul{
+				display: none;
+			}
+
+			ul li span {
+				display: block;
+				line-height: 32px;
+				padding-left: 15px;
+				background: url(./image/icon.png) no-repeat left 500px;
+
+			}
+			.show{
+				display: block;
+			}
+			ul li span.add {
+				background-position: 0px -32px;
+			}
+			ul li span.line {
+				background-position: 0px 11px;
+			}
+            .none{
+            	display: none;
+            }
+
+			.tree {
+				margin-left: 300px;
+			}
+
+		</style>
+		<script>
+			var arr = [
+		    {
+		        title : "第一级菜单",
+		        child : [
+		        	{title:"第二集菜单",
+		        	child:[
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"}
+		            	]
+		        	
+		        	},
+		            {title:"第二集菜单",
+		            child:[
+		            		{title:"第三集菜单",
+		            		child:[
+		            			{title:"第四集菜单"},
+		            			{title:"第四集菜单"},
+		            			{title:"第四集菜单"}
+		            		]
+		            		},
+		            		{title:"第三集菜单",
+		            		child:[
+		            			{title:"第四集菜单"},
+		            			{title:"第四集菜单"},
+		            			{title:"第四集菜单"}
+		            		]
+		            		},
+		            		{title:"第三集菜单",
+		            		child:[
+		            			{title:"第四集菜单"},
+		            			{title:"第四集菜单"},
+		            			{title:"第四集菜单"}
+		            		]
+		            		}
+		            	]
+		        	},
+		            {
+		            	title:"第二集菜单",
+		            	child:[
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"}
+		            	]
+		            }
+		        ]
+		    },
+		    {
+		        title : "第一级菜单",
+		        child : [
+		        	{title:"第二集菜单",
+		        	child:[
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"}
+		            	]
+		        	},
+		            {title:"第二集菜单",
+		            child:[
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"}
+		            	]
+		        	},
+		            {
+		            	title:"第二集菜单",
+		            	child:[
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"}
+		            	]
+		            }
+		        ]
+		    },
+		    {
+		        title : "第一级菜单",
+		        child : [
+		        	{title:"第二集菜单",
+		        	child:[
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"}
+		            	]
+		        	},
+		            {title:"第二集菜单",
+		            child:[
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"}
+		            	]
+		        	},
+		            {
+		            	title:"第二集菜单",
+		            	child:[
+		            		{title:"第三集菜单"},
+		            		{title:"第三集菜单"}
+		            	]
+		            }
+		        ]
+		    }
+		];
+		
+		/*
+			通过数据把结构生成出来。
+		*/
+		</script>
+	</head>
+
+	<body>
+		<div class="main">
+			<a href="http://www.miaov.com" class="logo"></a>
+			<div class="tree">
+			</div>
+
+		</div>
+		
+		<script>
+		var showList=document.querySelector('.tree');
+		showList.innerHTML=createShowList(arr);
+        
+        function createShowList(data){
+        	var str='<ul>';
+        	for(var i=0;i<data.length;i++){
+        		str+='<li><span class="add">'+data[i].title+'</span>';
+        		
+        		if(data[i].child&&data[i].child.length){
+        			str+=createShowList(data[i].child)
+        		}
+        		str+='</li>'
+        	}
+        	str+='</ul>'
+        	return str;
+        }
+        
+         let list=showList.querySelectorAll('li span');
+//       var li=showList.querySelectorAll('li');
+         for(var i=0;i<list.length;i++){
+         	list[i].index=i;
+         	list[i].onclick=function(){
+         		         		
+         		var li = this.parentNode.parentNode.querySelectorAll('li');
+               console.log(li)
+         		let next=this.nextElementSibling;	
+         		let pre=this.previousElementSibling;
+         		if(!next) return;
+    	           if(next.className=='show'){
+    	           		next.className='';
+    	           		this.className='add';
+    	           }else{
+    	           		for(var i=0;i<li.length;i++){
+    	           		    
+    	           			li[i].lastElementChild.className=''; 	           			
+    	           			li[i].firstElementChild.className='add';               	           			
+    	           	
+    	           			
+    	           		}
+    	           		
+    	           		next.className='show';
+    	           		this.className='line';
+    	           }
+ 		
+         	}
+         }
+//       list.forEach(function(el,i){
+//
+//       	el.onclick=function(){
+//       		let next=this.nextElementSibling;	
+//       		let pre=this.previousElementSibling;
+//       		if(next){
+////	                next.classList.toggle('show');
+//					next.className='show';
+//	                pre.className=''
+//	            }
+//       	}
+//       })
+		</script>
+	</body>
+</html>

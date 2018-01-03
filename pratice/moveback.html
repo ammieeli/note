@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+        .div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+
+    </style>
+    
+	</head>
+	<body id='body'>
+		<button id="btn">回放</button>
+		<div class="div"></div>		
+		<script>
+
+            var arrX=[];
+            var arrY=[];
+			
+			var div=document.getElementsByClassName('div')[0];
+			div.onmousedown=function(ev){
+				
+				let disL=ev.pageX-div.offsetLeft;
+				let disT=ev.pageY-div.offsetTop;
+				let cl=div.cloneNode(true);
+				cl.style.opacity=0.5;
+				body.appendChild(cl)
+				document.onmousemove=function(ev){
+					let sL=ev.pageX;
+					let sr=ev.pageY;
+					
+					cl.style.left=sL-disL+'px';
+					cl.style.top=sr-disT+'px';
+				    arrX.push(sL-disL);
+				    arrY.push(sr-disT)
+				}
+				document.onmouseup=function(ev){
+					
+					document.onmousemove=null;
+					document.onmouseup==null;
+					div.style.left=cl.style.left;
+					div.style.top=cl.style.top;
+					cl.remove();
+					
+				}
+				
+				return false;
+			}
+			
+			btn.onclick=function(){
+				let timer=null;
+				timer=setInterval(function(){
+					if(arrX.length==0&&arrY.length==0){
+						clearInterval(timer)
+					}
+					div.style.left=arrX.pop()+'px';
+					div.style.top=arrY.pop()+'px';
+				},20)
+			}
+
+		</script>
+	</body>
+</html>
